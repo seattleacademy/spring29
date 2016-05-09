@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/seattleacademy/spring29/issues"
   },
-  "homepage": "https://github.com/seattleacademy/spring29"
+  "homepage": "https://github.com/seattleacademy/spring29",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  }
 }
