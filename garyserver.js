@@ -18,12 +18,12 @@ function getPose() {
     return JSON.stringify(poseData);
 }
 
-app.all('/pose', function(req, res) {
+app.all('/getpose', function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.send(getPose());
 });
 
-app.all('/setPose', function(req, res) {
+app.all('/setpose', function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     console.log(JSON.parse(req.body));
     poseData.x = JSON.parse(req.body).x;
