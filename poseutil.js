@@ -18,7 +18,7 @@ function omega(vR, vL, d) { //rotation rate
 }
 
 function R(vR, vL, d) { //Radius of rotation circle
-  return (d * (vR + vL) / (vR, vL))
+  return (d * (vR + vL) / (vR - vL))
 }
 
 function V(vR, vL) { //Forward velocity, average of both wheels
