@@ -1,14 +1,16 @@
 vR = 100; //Right wheel velocity
-vL = 50, //Left wheel velocity
-d = 50, //Distance from wheel to center of axis
+vL = 50; //Left wheel velocity
+d = 50; //Distance from wheel to center of axis
 t = 3.14; //Time 
-console.log("omega", omega(vR, vL, d), "R", R(vR, vL, d), "V", V(vR, vL),
-  "Vx", Vx(vR, vL, d, t), "Vy", Vy(vR, vL, d, t), "deltaX", deltaX(vR, vL, d, t),
-  "deltaY", deltaY(vR, vL, d, t), "deltaHeading", deltaHeading(vR, vL, d, t),
-           "deltaHeadingDeg",radiansToDegrees(deltaHeading(vR, vL, d, t)));
 
-function radiansToDegrees(rad){ //convert degrees to radians
-  return rad * 180/Math.PI;
+// console.log("omega", omega(vR, vL, d), "R", R(vR, vL, d), "V", V(vR, vL),
+//   "Vx", Vx(vR, vL, d, t), "Vy", Vy(vR, vL, d, t))
+// console.log("deltaX", deltaX(vR, vL, d, t),
+//   "deltaY", deltaY(vR, vL, d, t), "deltaHeading", deltaHeading(vR, vL, d, t),
+//   "deltaHeadingDeg", radiansToDegrees(deltaHeading(vR, vL, d, t)));
+
+function radiansToDegrees(rad) { //convert degrees to radians
+  return rad * 180 / Math.PI;
 }
 
 function omega(vR, vL, d) { //rotation rate
