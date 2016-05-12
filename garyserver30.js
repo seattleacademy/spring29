@@ -6,15 +6,20 @@ app.use(bodyParser.text());
 port = 1500; //use ports between 1025 and 1999 on math server
 poseData = {}
 
+poseData.port = port;
 poseData.x = 0;
 poseData.y = 0;
 poseData.h = 0; //heading in degrees
 poseData.counter = 0;
 poseData.timestamp = Date.now();
-poseData.vR = 0;
 poseData.vL = 0;
+poseData.vR = 0;
 poseData.d = 130;
 poseData.omega = 0; //Rotational Velocity
+poseData.V = 0; //Speed vector, tangent to circle.
+poseData.vX = 0; //
+poseData.vY = 0; //
+poseData.deltaTime = 0; //
 
 function getPose() {
     poseData.counter++;
@@ -23,7 +28,13 @@ function getPose() {
 
 app.all('/getpose', function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    poseData.h = poseData.omega*(Date.now()-poseData.timestamp)/1000;
+    poseData.deltaTime = (Date.now()-poseData.timestamp)/1000;
+    poseData.h = poseData.omega*poseData.deltaTime;
+    poseData.h = poseData.h % 360;
+    poseData.h = Math.round(poseData.h % 360);
+    poseData.V = (poseData.vL + poseData.vR)/2;
+    poseData.vX = poseData.V * Math.cos(omega(poseData.vR,poseData.vL,poseData.d) * poseData.deltaTime);
+    poseData.vY = poseData.V * Math.sin(omega(poseData.vR,poseData.vL,poseData.d) * poseData.deltaTime);
     res.send(getPose());
 });
 
